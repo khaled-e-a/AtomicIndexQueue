@@ -20,9 +20,9 @@ public class PerformanceTest  {
 	*/
 	@Test
 	public void profileBoth() throws InterruptedException{
-		ArrayList<Integer> threadNumbers = new ArrayList<>(Arrays.asList(1, 2, 4, 8, 16));
-		ArrayList<Integer> queueSizes = new ArrayList<>(Arrays.asList(4, 8, 16, 32, 64, 128, 512, 1024, 2*1024, 4*1024, 8*1024, 16*1024));
-		ArrayList<Integer> testSizes = new ArrayList<>(Arrays.asList(1024, 2*1024, 4*1024, 8*1024, 16*1024, 32*1024, 64*1024, 128*1024, 512*1024, 1024*1024, 2*1024*1024, 4*1024*1024, 8*1024*1024, 16*1024*1024));
+		ArrayList<Integer> threadNumbers = new ArrayList<>(Arrays.asList(4, 8, 16));
+		ArrayList<Integer> queueSizes = new ArrayList<>(Arrays.asList(32, 128, 1024, 4*1024, 16*1024));
+		ArrayList<Integer> testSizes = new ArrayList<>(Arrays.asList(1024, 4*1024, 16*1024, 64*1024, 512*1024, 2*1024*1024));
 		for (Integer testSize: testSizes) {
 			System.out.println("Test size:" + testSize);
 			for (Integer queueSize: queueSizes) {

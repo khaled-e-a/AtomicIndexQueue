@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AtomicIndexQueue<T> {
 
-	private int size;
+	private int maxSize;
 	private Object[] queue;
 	public AtomicInteger queueIndex;
 
@@ -15,7 +15,7 @@ public class AtomicIndexQueue<T> {
 	 * @param size maximum size of the queue
 	 */
 	public AtomicIndexQueue(int size) {
-		this.size = size;
+		this.maxSize = size;
 		queue = new Object[size];
 		queueIndex = new AtomicInteger();
 		queueIndex.set(0);
@@ -24,7 +24,7 @@ public class AtomicIndexQueue<T> {
 	public void put(T value) {
 		while (true) {
 			synchronized (queueIndex){
-				if (queueIndex.get() < size) {
+				if (queueIndex.get() < maxSize) {
 					queue[queueIndex.get()] = value;
 					queueIndex.incrementAndGet();
 					break;
@@ -38,7 +38,7 @@ public class AtomicIndexQueue<T> {
 	 * @return true if the queue is full
 	 */
 	public boolean isFull(){
-		return 	queueIndex.get() == size;
+		return 	queueIndex.get() == maxSize;
 	}
 
 	/**
